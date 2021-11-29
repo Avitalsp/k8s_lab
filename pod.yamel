@@ -4,11 +4,22 @@ metadata:
  name: nginx 
 spec:
  containers: 
- - name: nginx 
-   image: nginx:1.7.9 
-   ports: 
-   - containerPort: 80
  - name: spring-music 
    image: yanivomc/spring-music:latest
+   volumeMounts:
+    - name: app-store
+      mountPath: /storage/
    ports: 
    - containerPort: 8080
+ - name: animals
+   image: supergiantkir/animals:bear
+   volumeMounts:
+    - name: app-store
+      mountPath: /storage/
+ volumes:
+ - name: app-storage
+   hostPath:
+     path: /tmp/files
+
+   ports: 
+   - containerPort: 8081
