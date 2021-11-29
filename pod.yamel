@@ -7,12 +7,12 @@ spec:
  - name: spring-music 
    image: yanivomc/spring-music:latest
    volumeMounts:
-    - name: app-store
+    - name: app-storage
       mountPath: /storage/
  - name: animals
    image: supergiantkir/animals:bear
    volumeMounts:
-    - name: app-store
+    - name: app-storage
       mountPath: /storage/
  volumes:
  - name: app-storage
