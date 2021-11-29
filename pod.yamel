@@ -9,8 +9,6 @@ spec:
    volumeMounts:
     - name: app-store
       mountPath: /storage/
-   ports: 
-   - containerPort: 8080
  - name: animals
    image: supergiantkir/animals:bear
    volumeMounts:
@@ -20,6 +18,3 @@ spec:
  - name: app-storage
    hostPath:
      path: /tmp/files
-
- ports: 
- - containerPort: 8081
