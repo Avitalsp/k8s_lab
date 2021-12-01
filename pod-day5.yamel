@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -35,6 +36,5 @@ spec:
     protocol: UDP
     port: 7372
     targetPort: 7372
-  type: LoadBalancer
 ---
 
