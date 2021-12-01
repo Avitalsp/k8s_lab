@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-test
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 
+  template: 
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: yanivomc/spring-music:latest
+        ports:
+        - containerPort: 8080
+
+---
+kind: Service      # Create new service
+apiVersion: v1     
+metadata:
+  name: my-service # Name of the service (DNS - RFC 2929)
+spec:
+  selector:
+    app: nginx    # Run on any pod with label - app:myapp
+  ports:          # Map incoming port to target port
+  - name: thistoweb    # Setting multiple ports listen 
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  - name: management
+    protocol: UDP
+    port: 7372
+    targetPort: 7372
+  type: LoadBalancer
+---
+
